@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainDiv {
+  padding: 35px;
+  background-color: #9ba9eb;
+  min-height: 100vh;
+}
+.imgCon {
+  width: 10%;
+}
+.SubCon {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.FirstCon1 {
+  background-color: #5763a5;
+  border-radius: 13px;
+  margin: 13px;
+  padding: 13px;
+  display: flex;
+}
+.secondsCon {
+  background-color: #5763a5;
+  border-radius: 13px;
+  margin: 13px;
+  padding: 13px;
+  display: flex;
+  flex-direction: column;
+}
+.formCon {
+  color: white;
+  width: 40%;
+  background-color: #454f84;
+  padding: 10px;
+  border-radius: 13px;
+}
+.hrr {
+  width: 100%;
+}
+.inou {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  margin-bottom: 49px;
+  height: 40px;
+  border-radius: 5px;
+}
+.asp {
+  width: 60%;
+}
+.inpu {
+  border-collapse: collapse;
+  width: 100%;
+  border-style: none;
+  border-radius: 5px;
+}
+.flexKaro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.btut {
+  width: 60px;
+  padding: 10px;
+  background-color: #0b69ff;
+  color: white;
+  border-width: 0px;
+  border-radius: 3px;
+}
+.imgManagerCon {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.managerImg {
+  width: 50%;
+}
+.firstSubCon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dsfjk {
+  display: flex;
+  align-items: center;
+}
+.h11 {
+  margin-right: 16px;
+}
+.inoutele {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.searchImgCon {
+  width: 60%;
+}
+.inoutel {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.oasswordCon {
+  display: flex;
+  justify-content: flex-end;
+}
+.lastCon {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 23px;
+  padding-right: 23px;
+}
+.cardCon {
+  border-style: solid;
+  border-radius: 6px;
+  display: flex;
+  width: 250px;
+  margin-right: 23px;
+  margin-bottom: 23px;
+}
+.flextoColumn {
+  font-weight: bold;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.initial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.imgstars {
+  width: 90%;
+}
