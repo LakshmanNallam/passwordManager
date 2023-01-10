@@ -172,3 +172,11 @@ body {
   background-color: transparent;
   border-style: none;
 }
+.noPaasswordImg {
+  width: 30%;
+}
+.lastCon0 {
+  display: flex;
+  justify-content: center;
+}
+
