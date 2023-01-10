@@ -184,40 +184,48 @@ class App extends Component {
               <label htmlFor="checkN-Box">Show Passwords</label>
             </div>
 
-            <ul className="lastCon">
-              {filterdList.map(eachItem => (
-                <li className="cardCon" key={eachItem.id} id={eachItem.id}>
-                  <div className="initial">
-                    <h1>{eachItem.firstName.slice(0, 1).toUpperCase()}</h1>
-                  </div>
-                  <div className="flextoColumn">
-                    <p>{eachItem.firstName}</p>
-                    <p>{eachItem.secondName}</p>
-                    <p>
-                      {isChecked ? (
-                        eachItem.thirdName
-                      ) : (
-                        <img
-                          src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
-                          className="imgstars"
-                          alt="stars"
-                        />
-                      )}
-                    </p>
-                  </div>
-                  <button
-                    className="initialbutton"
-                    type="button"
-                    onClick={() => this.deleteButtonTriggerd(eachItem.id)}
-                  >
-                    <img
-                      src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
-                      className="imgstars"
-                      alt="delete"
-                    />
-                  </button>
-                </li>
-              ))}
+            <ul className={filterdList.length === 0 ? `lastCon0` : `lastCon`}>
+              {filterdList.length === 0 ? (
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+                  alt="no passwords"
+                  className="noPaasswordImg"
+                />
+              ) : (
+                filterdList.map(eachItem => (
+                  <li className="cardCon" key={eachItem.id} id={eachItem.id}>
+                    <div className="initial">
+                      <h1>{eachItem.firstName.slice(0, 1).toUpperCase()}</h1>
+                    </div>
+                    <div className="flextoColumn">
+                      <p>{eachItem.firstName}</p>
+                      <p>{eachItem.secondName}</p>
+                      <p>
+                        {isChecked ? (
+                          eachItem.thirdName
+                        ) : (
+                          <img
+                            src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
+                            className="imgstars"
+                            alt="stars"
+                          />
+                        )}
+                      </p>
+                    </div>
+                    <button
+                      className="initialbutton"
+                      type="button"
+                      onClick={() => this.deleteButtonTriggerd(eachItem.id)}
+                    >
+                      <img
+                        src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
+                        className="imgstars"
+                        alt="delete"
+                      />
+                    </button>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </div>
@@ -227,3 +235,4 @@ class App extends Component {
 }
 
 export default App
+
