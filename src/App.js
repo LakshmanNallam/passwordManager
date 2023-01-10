@@ -3,7 +3,74 @@ import {v4 as uuidv4} from 'uuid'
 import './App.css'
 
 class App extends Component {
+  state = {
+    array: [],
+    website: '',
+    username: '',
+    password: '',
+    searchInput: '',
+    isChecked: false,
+  }
+
+  websiteChanged = event => {
+    this.setState({website: event.target.value})
+  }
+
+  usernameChanged = event => {
+    this.setState({username: event.target.value})
+  }
+
+  passwordChanged = event => {
+    this.setState({password: event.target.value})
+  }
+
+  submitEventTriggerd = event => {
+    event.preventDefault()
+    const {website, array, username, password} = this.state
+    this.setState({
+      array: [
+        ...array,
+        {
+          id: uuidv4(),
+          firstName: website,
+          secondName: username,
+          thirdName: password,
+        },
+      ],
+      website: '',
+      username: '',
+      password: '',
+    })
+  }
+
+  searchTriggerd = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  getFilteredList = (array, searchInput) =>
+    array.filter(eachItem => eachItem.firstName.includes(searchInput))
+
+  checkBoxTriggerd = () => {
+    this.setState(prevState => ({isChecked: !prevState.isChecked}))
+  }
+
+  deleteButtonTriggerd = id => {
+    const {array} = this.state
+    this.setState({array: array.filter(eachItem => eachItem.id !== id)})
+  }
+
   render() {
+    const {
+      website,
+      username,
+      password,
+      searchInput,
+      array,
+      isChecked,
+    } = this.state
+
+    const filterdList = this.getFilteredList(array, searchInput)
+    console.log(filterdList)
     return (
       <div className="mainDiv">
         <nav className="navEle">
@@ -32,6 +99,8 @@ class App extends Component {
                   type="text"
                   className="inpu"
                   placeholder="Enter Website"
+                  onChange={this.websiteChanged}
+                  value={website}
                 />
               </div>
               <div className="inou">
@@ -46,6 +115,8 @@ class App extends Component {
                   type="text"
                   className="inpu"
                   placeholder="Enter Username"
+                  onChange={this.usernameChanged}
+                  value={username}
                 />
               </div>
               <div className="inou">
@@ -57,13 +128,20 @@ class App extends Component {
                   />
                 </div>
                 <input
-                  type="text"
+                  type="password"
                   className="inpu"
                   placeholder="Enter Password"
+                  onChange={this.passwordChanged}
+                  value={password}
                 />
               </div>
               <div className="btn">
-                <button type="submit" className="btut">
+                <button
+                  type="submit"
+                  className="btut"
+                  onClick={this.submitEventTriggerd}
+                  value={searchInput}
+                >
                   Add
                 </button>
               </div>
@@ -81,7 +159,7 @@ class App extends Component {
             <div className="firstSubCon">
               <div className="dsfjk">
                 <h1 className="h11">Your Passwords</h1>
-                <p>count</p>
+                <h1>{filterdList.length}</h1>
               </div>
 
               <div className="inoutele">
@@ -92,41 +170,55 @@ class App extends Component {
                     alt="search"
                   />
                 </div>
-                <input type="search" />
+                <input type="search" onChange={this.searchTriggerd} />
               </div>
             </div>
 
             <hr className="hrr" />
             <div className="oasswordCon">
-              <input id="checkN-Box" type="checkbox" />
+              <input
+                id="checkN-Box"
+                type="checkbox"
+                onChange={this.checkBoxTriggerd}
+              />
               <label htmlFor="checkN-Box">Show Passwords</label>
             </div>
 
-            <div className="lastCon">
-              <div className="cardCon">
-                <div className="initial">
-                  <h1>Y</h1>
-                </div>
-                <div className="flextoColumn">
-                  <p>Youtbe</p>
-                  <p>Ussername</p>
-                  <div>
-                    <img
-                      src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
-                      className="imgstars"
-                      alt="stars"
-                    />
+            <ul className="lastCon">
+              {filterdList.map(eachItem => (
+                <li className="cardCon" key={eachItem.id} id={eachItem.id}>
+                  <div className="initial">
+                    <h1>{eachItem.firstName.slice(0, 1).toUpperCase()}</h1>
                   </div>
-                </div>
-                <div className="initial">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
-                    className="imgstars"
-                    alt="delete"
-                  />
-                </div>
-              </div>
-            </div>
+                  <div className="flextoColumn">
+                    <p>{eachItem.firstName}</p>
+                    <p>{eachItem.secondName}</p>
+                    <p>
+                      {isChecked ? (
+                        eachItem.thirdName
+                      ) : (
+                        <img
+                          src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
+                          className="imgstars"
+                          alt="stars"
+                        />
+                      )}
+                    </p>
+                  </div>
+                  <button
+                    className="initialbutton"
+                    type="button"
+                    onClick={() => this.deleteButtonTriggerd(eachItem.id)}
+                  >
+                    <img
+                      src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
+                      className="imgstars"
+                      alt="delete"
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
